@@ -29,10 +29,10 @@ let game = [
 0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 
 0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 
 
-0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 1, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 
-0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 1, 0, 1,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 
-0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 1, 0, 1,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 
-0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 1, 1, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 
+0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 
 0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 
 
 0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0,  0, 0, 0, 0, 0, 
@@ -68,11 +68,6 @@ const size = Math.sqrt(game.length)
 const squareSize = width / size
 let play = false
 
-
-console.log(squareSize)
-console.log(size)
-console.log(game.length)
-
 document.getElementById('pause').addEventListener('click', () => {
   play = !play
   document.getElementById('pause').innerHTML === 'Pause'
@@ -91,6 +86,7 @@ document.getElementById('canvas').addEventListener('click', (evt) => {
   if (mouseY > height) mouseY = height - 1
   if (mouseX < 0) mouseX = 1
   if (mouseY < 0) mouseY = 1
+  console.log(size)
 
   const getIndex = () => {
     const roundMouseY = Math.floor(mouseY / squareSize) * squareSize 
@@ -98,6 +94,7 @@ document.getElementById('canvas').addEventListener('click', (evt) => {
   }
 
   const index = getIndex()
+  console.log(index)
 
   const modifyCell = (index) => {
     if (game[index] === 1) game[index] = 0
@@ -109,11 +106,20 @@ document.getElementById('canvas').addEventListener('click', (evt) => {
 
 },false);
 
-const howManyNeighbours = (i) => {
+const getNeighbours = (i) => {
   let neighbours = 0
-  const tests = [i - size - 1, i - size, i - size + 1, 
-                 i - 1,        /*Cell*/         i + 1,
-                 i + size - 1, i + size, i + size + 1]
+  let tests = [i - size - 1, i - size, i - size + 1, 
+               i - 1,        /*Cell*/         i + 1,
+               i + size - 1, i + size, i + size + 1]
+  if (i % size === 0) {
+    tests = [/*i - size - 1,*/ i - size, i - size + 1, 
+             /*i - 1,*/        /*Cell*/         i + 1,
+             /*i + size - 1,*/ i + size, i + size + 1]
+  } else if ((i + 1) % size === 0) {
+    tests = [i - size - 1, i - size, /*i - size + 1,*/ 
+             i - 1,        /*Cell*/         /*i + 1,*/
+             i + size - 1, i + size, /*i + size + 1*/]
+  }
 
   tests.forEach(test => {
     if (game[test] === 1) neighbours++
@@ -155,7 +161,7 @@ const drawGrid = () => {
 const updateCanvas = () => {
   if (play) {
     game = game.map((elem, i) => {
-      const neighbours = howManyNeighbours(i)
+      const neighbours = getNeighbours(i)
       if (neighbours < 2) {
         drawCell(0, i)
         return 0
