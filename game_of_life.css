@@ -1,0 +1,6 @@
+#canvas{
+  position: absolute;
+  top: calc(50% - 500px / 2);
+  left: calc(50% - 500px / 2);
+  border: black solid 2px;
+}
