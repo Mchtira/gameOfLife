@@ -9,21 +9,35 @@ let game = [
 
 const canvas = document.getElementById("canvas")
 const ctx = canvas.getContext('2d')
-const height = canvas.height
-const width = canvas.width
+let height = canvas.height
+let width = canvas.width
 let size = Math.sqrt(game.length)
 let squareSize = width / size
 let play = false
 
 document.getElementById('form').addEventListener('submit', (e) => {
   e.preventDefault()
-  const arraySize = document.getElementById('arraySize').value
-  game.length = Number(arraySize) * Number(arraySize)
-  game = game.fill(0)
-  size = Math.sqrt(game.length)
+
+  const canvasSize = Number(document.getElementById('canvasSize').value)
+  const arraySize = Number(document.getElementById('arraySize').value)
+  
+  console.log(canvasSize)
+
+  if (canvasSize) {
+    canvas.height = canvasSize
+    canvas.width = canvasSize
+    height = canvas.height
+    width = canvas.width
+  }
+  if (arraySize) {
+    game.length = arraySize * arraySize
+    game = game.fill(0)
+    size = Math.sqrt(game.length)
+  }
+
   squareSize = width / size
+  
   drawCanvas()
-  console.log(game)
 })
 
 document.getElementById('pause').addEventListener('click', () => {
@@ -70,11 +84,11 @@ const getNeighbours = (i) => {
                i + size - 1, i + size, i + size + 1]
   if (i % size === 0) {
     tests = [/*i - size - 1,*/ i - size, i - size + 1, 
-             /*i - 1,*/        /*Cell*/         i + 1,
+             /*i - 1,*/      /*Cell*/           i + 1,
              /*i + size - 1,*/ i + size, i + size + 1]
   } else if ((i + 1) % size === 0) {
     tests = [i - size - 1, i - size, /*i - size + 1,*/ 
-             i - 1,        /*Cell*/         /*i + 1,*/
+             i - 1,          /*Cell*/       /*i + 1,*/
              i + size - 1, i + size, /*i + size + 1*/]
   }
 

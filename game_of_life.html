@@ -5,9 +5,25 @@
   <title>Le jeu de la Vie</title>
 </head>
 <body>
-  <div><button id='pause'>Play</button></div>
-  <form id='form'><input id='arraySize'/></form>
-  <div id="game"><canvas id="canvas" width=500 height=500></canvas></div>
+  <div>
+    <button id='pause'>Play</button>
+  </div>
+
+  <form id='form'>
+    <div>Nombre de cases par ligne
+      <input id='arraySize'/>
+    </div>
+    <div>Taille (en pixels) du jeu
+      <input id='canvasSize'/>
+    </div>
+    <button>send</button>
+  </form>
+
+
+  <div id="game">
+    <canvas id="canvas" width=500 height=500 />
+  </div>
+
 </body>
 <script src="/home/chtira/gameOfLife/game_of_life.js"></script>
 </html>
