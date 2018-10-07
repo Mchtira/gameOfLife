@@ -5,22 +5,25 @@
   <title>Le jeu de la Vie</title>
 </head>
 <body>
+
   <div>
     <button id='pause'>Play</button>
   </div>
 
-  <form id='form'>
+  <form id='arrayForm'>
     <div>Nombre de cases par ligne
       <input id='arraySize'/>
     </div>
+  </form>
+
+  <form id='canvasForm'>
     <div>Taille (en pixels) du jeu
       <input id='canvasSize'/>
     </div>
-    <button>send</button>
   </form>
 
-
   <div id="game">
+    <div><p>Générations : </p><p id="generation">0</p><div>
     <canvas id="canvas" width=500 height=500 />
   </div>
 

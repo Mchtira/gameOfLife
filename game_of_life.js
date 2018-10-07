@@ -1,9 +1,14 @@
 let game = [ 
-0, 0, 0, 0, 0,
-0, 0, 0, 0, 0,
-0, 0, 0, 0, 0,
-0, 0, 0, 0, 0,
-0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
 ]
 
 
@@ -14,21 +19,13 @@ let width = canvas.width
 let size = Math.sqrt(game.length)
 let squareSize = width / size
 let play = false
+let generation = 0
 
-document.getElementById('form').addEventListener('submit', (e) => {
+document.getElementById('arrayForm').addEventListener('submit', (e) => {
   e.preventDefault()
-
-  const canvasSize = Number(document.getElementById('canvasSize').value)
   const arraySize = Number(document.getElementById('arraySize').value)
+  generation = 0
   
-  console.log(canvasSize)
-
-  if (canvasSize) {
-    canvas.height = canvasSize
-    canvas.width = canvasSize
-    height = canvas.height
-    width = canvas.width
-  }
   if (arraySize) {
     game.length = arraySize * arraySize
     game = game.fill(0)
@@ -37,6 +34,24 @@ document.getElementById('form').addEventListener('submit', (e) => {
 
   squareSize = width / size
   
+  drawCanvas()
+})
+
+document.getElementById('canvasForm').addEventListener('submit', (e) => {
+  e.preventDefault()
+  const canvasSize = Number(document.getElementById('canvasSize').value)
+  generation = 0
+
+  if (canvasSize) {
+    canvas.height = canvasSize
+    canvas.width = canvasSize
+    height = canvas.height
+    width = canvas.width
+    generation = 0
+  }
+
+  squareSize = width / size
+
   drawCanvas()
 })
 
@@ -58,7 +73,6 @@ document.getElementById('canvas').addEventListener('click', (evt) => {
   if (mouseY > height) mouseY = height - 1
   if (mouseX < 0) mouseX = 1
   if (mouseY < 0) mouseY = 1
-  console.log(size)
 
   const getIndex = () => {
     const roundMouseY = Math.floor(mouseY / squareSize) * squareSize 
@@ -101,7 +115,7 @@ const getNeighbours = (i) => {
 
 const drawCell = (n, index) => {
   ctx.beginPath()
-  if (n === 0) {
+  if (n !== 1) {
     ctx.fillStyle = "rgb(255,255,255)"
     ctx.fillRect(index % size * squareSize, Math.floor(index / size) * squareSize,
                  squareSize, squareSize)
@@ -130,6 +144,7 @@ const drawGrid = () => {
 }
 
 const updateCanvas = () => {
+  let shouldPlay = false
   if (play) {
     game = game.map((elem, i) => {
       const neighbours = getNeighbours(i)
@@ -141,6 +156,7 @@ const updateCanvas = () => {
         return elem
       } else if (neighbours === 3)  {
         drawCell(1, i)
+        if (elem === 0) shouldPlay = true
         return 1
       } else if (neighbours > 3) {
         drawCell(0, i) 
@@ -148,7 +164,11 @@ const updateCanvas = () => {
       }
     })
     drawGrid()
-    setTimeout(() => requestAnimationFrame(updateCanvas), 125)
+    if (shouldPlay) {
+      generation++
+      document.getElementById('generation').innerHTML = generation
+      setTimeout(() => requestAnimationFrame(updateCanvas), 250)
+    }
   }
 }
 
