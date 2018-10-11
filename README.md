@@ -1,4 +1,4 @@
-#Game Of Life
+# Game Of Life
 
 The universe of the Game of Life isn't really a game because there is no player. The game is on a two-dimensional grid of square cells, each of which is in one of two possible states, live or dead. Every cell interacts with its eight neighbours, which are the cells that are directly horizontally, vertically, or diagonally adjacent. At each step in time, the following transitions occur:
 
