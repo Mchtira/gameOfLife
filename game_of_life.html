@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <link rel="stylesheet" type="text/css" href="/home/chtira/gameOfLife/game_of_life.css">
+  <title>Le jeu de la Vie</title>
 </head>
 <body>
-  <canvas id="canvas" width=500 height=500></canvas>
+
+  <div>
+    <button id='pause'>Play</button>
+  </div>
+
+  <form id='arrayForm'>
+    <div>Nombre de cases par ligne
+      <input id='arraySize'/>
+    </div>
+  </form>
+
+  <form id='canvasForm'>
+    <div>Taille (en pixels) du jeu
+      <input id='canvasSize'/>
+    </div>
+  </form>
+
+  <div id="game">
+    <div><p>Générations : </p><p id="generation">0</p><div>
+    <canvas id="canvas" width=500 height=500 />
+  </div>
+
 </body>
-<script src="./test.js"></script>
+<script src="/home/chtira/gameOfLife/game_of_life.js"></script>
 </html>
